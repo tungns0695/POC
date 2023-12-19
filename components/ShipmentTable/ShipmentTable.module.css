@@ -1,0 +1,15 @@
+.header {
+  color: var(--mantine-color-white);
+  background-color: #515460;
+  /* th {
+    border-bottom: 1px solid var(--mantine-color-orange-6);
+  } */
+}
+
+.pagination {
+  display: flex;
+
+  div {
+    margin-left: auto;
+  }
+}
