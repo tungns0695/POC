@@ -6,10 +6,6 @@
   } */
 }
 
-.pagination {
-  display: flex;
-
-  div {
-    margin-left: auto;
-  }
+.root {
+  display: "none";
 }

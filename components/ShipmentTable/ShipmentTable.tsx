@@ -32,17 +32,16 @@ export const ShipmentTable: React.FC<ShipmentTableProps> = ({ data }) => {
   return (
     <>
       <Flex mih={50} gap="xs" justify="flex-end">
-        <Button variant="default"><LiaFileExportSolid /> Export selected row</Button>
-        <Button variant="default"><TbTableExport /> Export all</Button>
+        <Button disabled={true} variant="default"><LiaFileExportSolid /> Export selected row</Button>
+        <Button disabled={true} variant="default"><TbTableExport /> Export all</Button>
       </Flex>
       <DataTable
-        height={300}
+        height={'auto'}
         withTableBorder
         records={records}
         idAccessor="WaybillNo"
         classNames={{
-          header: classes.header,
-          pagination: classes.pagination,
+          header: classes.header
         }}
         sortStatus={sortStatus}
         onSortStatusChange={setSortStatus}
@@ -64,9 +63,6 @@ export const ShipmentTable: React.FC<ShipmentTableProps> = ({ data }) => {
           { accessor: 'CBM', width: 100, sortable: true },
           { accessor: 'Weight', width: 100, sortable: true },
         ]}
-        emptyState={
-          <></>
-        }
         totalRecords={data.length}
         recordsPerPage={PAGE_SIZE}
         loadingText="Loading..."

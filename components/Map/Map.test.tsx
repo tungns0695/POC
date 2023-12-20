@@ -1,5 +1,5 @@
 import { render } from '@/test-utils';
-import { ShipmentTable } from './ShipmentTable';
+import { Map } from './Map';
 
 describe('ShipmentTable component', () => {
 });
