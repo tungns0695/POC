@@ -1,6 +1,6 @@
     steps:
     - name: 'gcr.io/cloud-builders/docker'
-      args: [ 'build', '-t', 'gcr.io/deft-ocean-408609/github.com/tungns0695/poc:$COMMIT_SHA', '.' ]
+      args: [ 'build', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/github.com/tungns0695/poc:$COMMIT_SHA', '.' ]
     - name: 'gcr.io/cloud-builders/docker'
       args: ['push', 'us-central1-docker.pkg.dev/$PROJECT_ID/github.com/tungns0695/poc:$COMMIT_SHA']
     logsBucket: 'gs://poc_build_log'
