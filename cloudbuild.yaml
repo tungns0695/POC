@@ -2,7 +2,7 @@
     - name: 'gcr.io/cloud-builders/docker'
       args: [ 'build', '-t', 'gcr.io/deft-ocean-408609/github.com/tungns0695/poc:$COMMIT_SHA', '.' ]
     - name: 'gcr.io/cloud-builders/docker'
-      args: ['push', 'us-central1-docker.pkg.dev/$PROJECT_ID/deft-ocean-408609/poc:$COMMIT_SHA']
+      args: ['push', 'us-central1-docker.pkg.dev/$PROJECT_ID/']
     logsBucket: 'gs://poc_build_log'
     options:
       logging: GCS_ONLY
