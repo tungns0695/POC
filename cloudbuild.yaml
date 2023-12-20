@@ -1,0 +1,6 @@
+    steps:
+    - name: 'gcr.io/cloud-builders/docker'
+      args: [ 'build', '-t', 'gcr.io/deft-ocean-408609/github.com/tungns0695/poc:$COMMIT_SHA', '.' ]
+    logsBucket: 'gs://poc_build_log'
+    options:
+      logging: GCS_ONLY
