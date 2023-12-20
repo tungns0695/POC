@@ -4,7 +4,7 @@ COPY package.json /app/
 WORKDIR /app
 COPY . ./
 
-ENV NEXT_PUBLIC_APP_URL=https://www.mydomain.com
+ENV NEXT_PUBLIC_APP_URL=https://poc-5xwr3324aa-uc.a.run.app
 
 RUN npm install
 RUN npm run build
