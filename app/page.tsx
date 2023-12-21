@@ -125,12 +125,12 @@ export default function HomePage() {
       <Modal opened={configOpen} onClose={closeConfig} size="xs" title="Config">
         <Input.Wrapper label="Enpoint">
           <Input placeholder="Input Enpoint"
-            value={config.endpoint}
+            value={tempConfig.endpoint}
             onChange={(value) => setTempConfig({ ...tempConfig, endpoint: value })}
           />
           <Space h="xs" />
           <Input placeholder="Input Proxy Enpoint"
-            value={config.proxyendpoint}
+            value={tempConfig.proxyendpoint}
             onChange={(value) => setTempConfig({ ...tempConfig, proxyendpoint: value })}
           />
         </Input.Wrapper>
@@ -138,7 +138,7 @@ export default function HomePage() {
         <NumberInput
           onChange={(value) => setTempConfig({ ...tempConfig, randomAmount: value })}
           label="Random record amount"
-          value={config.randomAmount}
+          value={tempConfig.randomAmount}
           placeholder="Random record amount"
         />
         <Space h="xl" />
@@ -148,7 +148,7 @@ export default function HomePage() {
           max={7}
           step={1}
           onChange={(value) => setTempConfig({ ...tempConfig, group: value })}
-          value={config.group}
+          value={tempConfig.group}
           marks={[
             { value: 1, label: '1' },
             { value: 2, label: '2' },
