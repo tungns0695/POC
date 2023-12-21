@@ -128,6 +128,7 @@ export default function HomePage() {
             value={config.endpoint}
             onChange={(value) => setTempConfig({ ...tempConfig, endpoint: value })}
           />
+          <Space h="xs" />
           <Input placeholder="Input Proxy Enpoint"
             value={config.proxyendpoint}
             onChange={(value) => setTempConfig({ ...tempConfig, proxyendpoint: value })}
