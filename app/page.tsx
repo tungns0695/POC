@@ -9,26 +9,30 @@ import { notifications } from '@mantine/notifications';
 import { Map } from '../components/Map/Map';
 
 export default function HomePage() {
-  let configStorageString = window.localStorage.getItem('config');
-  let configStorageData: any;
-  if (!configStorageString) {
-    configStorageData = {
-      randomAmount: 100,
-      group: 5,
-      proxyendpoint: "https://nodeproxy-5xwr3324aa-uc.a.run.app",
-      endpoint: "http://13.212.217.154:5000/cluster"
-    }
-    window.localStorage.setItem("config", JSON.stringify(configStorageData));
-  } else {
-    configStorageData = JSON.parse(configStorageString);
-  }
+
   const [shipments, setShipments] = useState<Shipment[]>([]);
-  const [config, setConfig] = useState<any>(configStorageData);
-  const [tempConfig, setTempConfig] = useState<any>(configStorageData);
+  const [config, setConfig] = useState<any>({});
+  const [tempConfig, setTempConfig] = useState<any>({});
   const [mapOpen, setMapOpen] = useState(false);
   const [configOpen, setConfigOpen] = useState(false);
 
   useEffect(function mount() {
+    let configStorageString = window.localStorage.getItem('config');
+    let configStorageData: any;
+    if (!configStorageString) {
+      configStorageData = {
+        randomAmount: 100,
+        group: 5,
+        proxyendpoint: "https://nodeproxy-5xwr3324aa-uc.a.run.app",
+        endpoint: "http://13.212.217.154:5000/cluster"
+      }
+      window.localStorage.setItem("config", JSON.stringify(configStorageData));
+    } else {
+      configStorageData = JSON.parse(configStorageString);
+    }
+    setConfig(configStorageData);
+    setTempConfig(configStorageData);
+
     let localStorageData = window.localStorage.getItem('mockData');
     if (!localStorageData) {
       generateMockData();
