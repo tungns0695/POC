@@ -8,11 +8,18 @@ import React, { useEffect, useState } from "react";
 import { notifications } from '@mantine/notifications';
 import { Map } from '../components/Map/Map';
 
+const defaultConfig = {
+  randomAmount: 100,
+  group: 5,
+  proxyendpoint: "https://nodeproxy-5xwr3324aa-uc.a.run.app",
+  endpoint: "http://13.212.217.154:5000/cluster"
+}
+
 export default function HomePage() {
 
   const [shipments, setShipments] = useState<Shipment[]>([]);
   const [config, setConfig] = useState<any>({});
-  const [tempConfig, setTempConfig] = useState<any>({});
+  const [tempConfig, setTempConfig] = useState<any>(defaultConfig);
   const [mapOpen, setMapOpen] = useState(false);
   const [configOpen, setConfigOpen] = useState(false);
 
@@ -20,12 +27,7 @@ export default function HomePage() {
     let configStorageString = window.localStorage.getItem('config');
     let configStorageData: any;
     if (!configStorageString) {
-      configStorageData = {
-        randomAmount: 100,
-        group: 5,
-        proxyendpoint: "https://nodeproxy-5xwr3324aa-uc.a.run.app",
-        endpoint: "http://13.212.217.154:5000/cluster"
-      }
+      configStorageData = defaultConfig;
       window.localStorage.setItem("config", JSON.stringify(configStorageData));
     } else {
       configStorageData = JSON.parse(configStorageString);
@@ -35,14 +37,14 @@ export default function HomePage() {
 
     let localStorageData = window.localStorage.getItem('mockData');
     if (!localStorageData) {
-      generateMockData();
+      generateMockData(configStorageData.randomAmount);
     } else {
       setShipments([...JSON.parse(localStorageData)]);
     }
   }, [])
 
-  function generateMockData() {
-    let generatedMockData = MockDataGenerator(config.randomAmount);
+  function generateMockData(amount: any) {
+    let generatedMockData = MockDataGenerator(amount);
     setShipments([...generatedMockData]);
     window.localStorage.setItem("mockData", JSON.stringify(generatedMockData));
   }
@@ -89,6 +91,7 @@ export default function HomePage() {
   }
 
   const saveConfig = function () {
+    debugger
     setConfig(tempConfig);
     window.localStorage.setItem("config", JSON.stringify(tempConfig));
     setConfigOpen(false);
@@ -103,7 +106,7 @@ export default function HomePage() {
     <Container fluid >
       <h2>Shipment Order List</h2>
       <Flex mih={50} gap="xs" justify="flex-end">
-        <Button variant="filled" onClick={generateMockData} color="cyan" radius="xl">Regenerate Random Data</Button>
+        <Button variant="filled" onClick={() => generateMockData(config.randomAmount)} color="cyan" radius="xl">Regenerate Random Data</Button>
         <Button variant="filled" color="cyan" radius="xl" disabled={true}>Vehicle Assignment</Button>
         <Button onClick={() => groupShipments(shipments)} variant="filled" color="cyan" radius="xl">Create Shipment Order</Button>
       </Flex>
@@ -126,12 +129,12 @@ export default function HomePage() {
         <Input.Wrapper label="Enpoint">
           <Input placeholder="Input Enpoint"
             value={tempConfig.endpoint}
-            onChange={(value) => setTempConfig({ ...tempConfig, endpoint: value })}
+            onChange={(evt) => { setTempConfig({ ...tempConfig, endpoint: evt.target.value }) }}
           />
           <Space h="xs" />
           <Input placeholder="Input Proxy Enpoint"
             value={tempConfig.proxyendpoint}
-            onChange={(value) => setTempConfig({ ...tempConfig, proxyendpoint: value })}
+            onChange={(evt) => setTempConfig({ ...tempConfig, proxyendpoint: evt.target.value })}
           />
         </Input.Wrapper>
         <Space h="xs" />
