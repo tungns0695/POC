@@ -15,6 +15,7 @@ export default function HomePage() {
     configStorageData = {
       randomAmount: 100,
       group: 5,
+      proxyendpoint: "https://nodeproxy-5xwr3324aa-uc.a.run.app",
       endpoint: "http://13.212.217.154:5000/cluster"
     }
     window.localStorage.setItem("config", JSON.stringify(configStorageData));
@@ -44,7 +45,7 @@ export default function HomePage() {
 
   async function groupShipments(shipments: Shipment[]) {
     try {
-      const rawResponse = await fetch(config.endpoint, {
+      const rawResponse = await fetch(config.proxyendpoint, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -122,6 +123,10 @@ export default function HomePage() {
           <Input placeholder="Input Enpoint"
             value={config.endpoint}
             onChange={(value) => setTempConfig({ ...tempConfig, endpoint: value })}
+          />
+          <Input placeholder="Input Proxy Enpoint"
+            value={config.proxyendpoint}
+            onChange={(value) => setTempConfig({ ...tempConfig, proxyendpoint: value })}
           />
         </Input.Wrapper>
         <Space h="xs" />
