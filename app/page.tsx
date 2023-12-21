@@ -2,7 +2,7 @@
 import { MockDataGenerator } from '../utils/MockDataGenerator'
 import { ShipmentTable } from '../components/ShipmentTable/ShipmentTable';
 import { Container } from '@mantine/core';
-import { Flex, Button, Modal, Space, Input, Slider, NumberInput } from '@mantine/core';
+import { Flex, Button, Modal, Space, Input, Slider, NumberInput, Text } from '@mantine/core';
 import { Shipment } from '../types/Shipment';
 import React, { useEffect, useState } from "react";
 import { notifications } from '@mantine/notifications';
@@ -145,6 +145,7 @@ export default function HomePage() {
           placeholder="Random record amount"
         />
         <Space h="xl" />
+        <Text size="sm">Group count</Text>
         <Slider
           color="blue"
           min={1}
