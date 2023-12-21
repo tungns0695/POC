@@ -2,7 +2,7 @@
 import { MockDataGenerator } from '../utils/MockDataGenerator'
 import { ShipmentTable } from '../components/ShipmentTable/ShipmentTable';
 import { Container } from '@mantine/core';
-import { Flex, Button, Modal, Space, Input, Slider, NumberInput, Text } from '@mantine/core';
+import { Flex, Button, Modal, Space, Input, Slider, NumberInput, Text, LoadingOverlay } from '@mantine/core';
 import { Shipment } from '../types/Shipment';
 import React, { useEffect, useState, useMemo } from "react";
 import { notifications } from '@mantine/notifications';
@@ -15,9 +15,9 @@ const defaultConfig = {
 }
 
 export default function HomePage() {
-
   const [shipments, setShipments] = useState<Shipment[]>([]);
   const [config, setConfig] = useState<any>({});
+  const [showLoader, setShowLoader] = useState(false);
   const [tempConfig, setTempConfig] = useState<any>(defaultConfig);
   const [mapOpen, setMapOpen] = useState(false);
   const [configOpen, setConfigOpen] = useState(false);
@@ -57,6 +57,7 @@ export default function HomePage() {
 
   async function groupShipments(shipments: Shipment[]) {
     try {
+      setShowLoader(true);
       const rawResponse = await fetch(config.endpoint, {
         method: 'POST',
         headers: {
@@ -83,8 +84,9 @@ export default function HomePage() {
       }
       const groupedData = shipments.map<Shipment>(shipment => {
         const order = orders.find(order => order.order_id == shipment.WaybillNo);
-        return { ...shipment, Group: order.group, GroupType: "Automatic" } as Shipment;
+        return { ...shipment, Group: order.group, GroupType: "Automatic", Status: "Grouped" } as Shipment;
       });
+      setShowLoader(false);
       setShipments([...groupedData]);
       window.localStorage.setItem("mockData", JSON.stringify(groupedData));
     } catch (ex) {
@@ -166,6 +168,12 @@ export default function HomePage() {
         <Space h="xl" />
         <Button variant="filled" onClick={saveConfig} color="cyan" radius="xl">Save</Button>
       </Modal>
+      <LoadingOverlay
+        visible={showLoader}
+        zIndex={1000}
+        overlayProps={{ radius: 'sm', blur: 2 }}
+        loaderProps={{ color: 'pink', type: 'bars' }}
+      />
     </Container>
   );
 }
