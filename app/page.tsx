@@ -4,9 +4,9 @@ import { ShipmentTable } from '../components/ShipmentTable/ShipmentTable';
 import { Container } from '@mantine/core';
 import { Flex, Button, Modal, Space, Input, Slider, NumberInput, Text } from '@mantine/core';
 import { Shipment } from '../types/Shipment';
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { notifications } from '@mantine/notifications';
-import { Map } from '../components/Map/Map';
+import dynamic from 'next/dynamic'
 
 const defaultConfig = {
   randomAmount: 100,
@@ -22,6 +22,13 @@ export default function HomePage() {
   const [tempConfig, setTempConfig] = useState<any>(defaultConfig);
   const [mapOpen, setMapOpen] = useState(false);
   const [configOpen, setConfigOpen] = useState(false);
+
+  const Map = dynamic(
+    () => import("../components/Map/Map").then((module) => module.Map),
+    {
+      ssr: false,
+    }
+  );
 
   useEffect(function mount() {
     let configStorageString = window.localStorage.getItem('config');
@@ -51,7 +58,7 @@ export default function HomePage() {
 
   async function groupShipments(shipments: Shipment[]) {
     try {
-      const rawResponse = await fetch(config.proxyendpoint, {
+      const rawResponse = await fetch(config.endpoint, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
