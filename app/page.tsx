@@ -11,7 +11,7 @@ import dynamic from 'next/dynamic'
 const defaultConfig = {
   randomAmount: 100,
   group: 5,
-  endpoint: "http://13.212.217.154:5000/cluster"
+  endpoint: "https://pocbe-5xwr3324aa-uc.a.run.app/cluster"
 }
 
 export default function HomePage() {
