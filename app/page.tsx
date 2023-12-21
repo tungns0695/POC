@@ -2,15 +2,30 @@
 import { MockDataGenerator } from '../utils/MockDataGenerator'
 import { ShipmentTable } from '../components/ShipmentTable/ShipmentTable';
 import { Container } from '@mantine/core';
-import { Flex, Button, Modal, Space } from '@mantine/core';
+import { Flex, Button, Modal, Space, Input, Slider, NumberInput } from '@mantine/core';
 import { Shipment } from '../types/Shipment';
 import React, { useEffect, useState } from "react";
 import { notifications } from '@mantine/notifications';
 import { Map } from '../components/Map/Map';
 
 export default function HomePage() {
+  let configStorageString = window.localStorage.getItem('config');
+  let configStorageData: any;
+  if (!configStorageString) {
+    configStorageData = {
+      randomAmount: 100,
+      group: 5,
+      endpoint: "http://13.212.217.154:5000/cluster"
+    }
+    window.localStorage.setItem("config", JSON.stringify(configStorageData));
+  } else {
+    configStorageData = JSON.parse(configStorageString);
+  }
   const [shipments, setShipments] = useState<Shipment[]>([]);
+  const [config, setConfig] = useState<any>(configStorageData);
+  const [tempConfig, setTempConfig] = useState<any>(configStorageData);
   const [mapOpen, setMapOpen] = useState(false);
+  const [configOpen, setConfigOpen] = useState(false);
 
   useEffect(function mount() {
     let localStorageData = window.localStorage.getItem('mockData');
@@ -22,21 +37,22 @@ export default function HomePage() {
   }, [])
 
   function generateMockData() {
-    let generatedMockData = MockDataGenerator(100);
+    let generatedMockData = MockDataGenerator(config.randomAmount);
     setShipments([...generatedMockData]);
     window.localStorage.setItem("mockData", JSON.stringify(generatedMockData));
   }
 
   async function groupShipments(shipments: Shipment[]) {
     try {
-      const rawResponse = await fetch("http://54.255.164.169:5000/cluster", {
+      const rawResponse = await fetch(config.endpoint, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          k: 5,
+          k: config.group,
+          endpoint: config.endpoint,
           orders: shipments.map(x => {
             return {
               order_id: x.WaybillNo,
@@ -67,6 +83,17 @@ export default function HomePage() {
     }
   }
 
+  const saveConfig = function () {
+    setConfig(tempConfig);
+    window.localStorage.setItem("config", JSON.stringify(tempConfig));
+    setConfigOpen(false);
+  }
+
+  const closeConfig = function () {
+    setTempConfig(config);
+    setConfigOpen(false);
+  }
+
   return (
     <Container fluid >
       <h2>Shipment Order List</h2>
@@ -79,7 +106,7 @@ export default function HomePage() {
       <Space h="xs" />
       <Flex mih={50} gap="xs" justify="flex-start">
         <Button onClick={() => setMapOpen(true)} variant="default">Show in map</Button>
-        {/* <Button variant="default">Config</Button> */}
+        <Button onClick={() => setConfigOpen(true)} variant="default">Config</Button>
       </Flex>
       <Modal
         opened={mapOpen}
@@ -90,9 +117,41 @@ export default function HomePage() {
       >
         <Map shipments={shipments} />
       </Modal>
-      {/* <Modal opened={true} onClose={close} size="xs" title="Config">
-
-      </Modal> */}
+      <Modal opened={configOpen} onClose={closeConfig} size="xs" title="Config">
+        <Input.Wrapper label="Enpoint">
+          <Input placeholder="Input Enpoint"
+            value={config.endpoint}
+            onChange={(value) => setTempConfig({ ...tempConfig, endpoint: value })}
+          />
+        </Input.Wrapper>
+        <Space h="xs" />
+        <NumberInput
+          onChange={(value) => setTempConfig({ ...tempConfig, randomAmount: value })}
+          label="Random record amount"
+          value={config.randomAmount}
+          placeholder="Random record amount"
+        />
+        <Space h="xl" />
+        <Slider
+          color="blue"
+          min={1}
+          max={7}
+          step={1}
+          onChange={(value) => setTempConfig({ ...tempConfig, group: value })}
+          value={config.group}
+          marks={[
+            { value: 1, label: '1' },
+            { value: 2, label: '2' },
+            { value: 3, label: '3' },
+            { value: 4, label: '4' },
+            { value: 5, label: '5' },
+            { value: 6, label: '6' },
+            { value: 7, label: '7' },
+          ]}
+        />
+        <Space h="xl" />
+        <Button variant="filled" onClick={saveConfig} color="cyan" radius="xl">Save</Button>
+      </Modal>
     </Container>
   );
 }
