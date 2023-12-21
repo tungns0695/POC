@@ -11,7 +11,6 @@ import dynamic from 'next/dynamic'
 const defaultConfig = {
   randomAmount: 100,
   group: 5,
-  proxyendpoint: "https://nodeproxy-5xwr3324aa-uc.a.run.app",
   endpoint: "http://13.212.217.154:5000/cluster"
 }
 
@@ -98,7 +97,6 @@ export default function HomePage() {
   }
 
   const saveConfig = function () {
-    debugger
     setConfig(tempConfig);
     window.localStorage.setItem("config", JSON.stringify(tempConfig));
     setConfigOpen(false);
@@ -137,11 +135,6 @@ export default function HomePage() {
           <Input placeholder="Input Enpoint"
             value={tempConfig.endpoint}
             onChange={(evt) => { setTempConfig({ ...tempConfig, endpoint: evt.target.value }) }}
-          />
-          <Space h="xs" />
-          <Input placeholder="Input Proxy Enpoint"
-            value={tempConfig.proxyendpoint}
-            onChange={(evt) => setTempConfig({ ...tempConfig, proxyendpoint: evt.target.value })}
           />
         </Input.Wrapper>
         <Space h="xs" />
