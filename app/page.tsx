@@ -146,13 +146,13 @@ export default function HomePage() {
           />
         </Input.Wrapper>
         <Space h="xs" /> */}
-        <NumberInput
+        {/* <NumberInput
           onChange={(value) => setTempConfig({ ...tempConfig, randomAmount: value })}
           label="Random record amount"
           value={tempConfig.randomAmount}
           placeholder="Random record amount"
         />
-        <Space h="xl" />
+        <Space h="xl" /> */}
         <Text size="sm">Group count</Text>
         <Slider
           color="blue"
