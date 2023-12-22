@@ -118,8 +118,8 @@ export default function HomePage() {
     <Container fluid >
       <h2>Shipment Order List</h2>
       <Flex mih={50} gap="xs" justify="flex-end">
-        <Button variant="filled" onClick={() => generateMockData(config.randomAmount)} color="cyan" radius="xl">Regenerate Random Data</Button>
-        <Button variant="filled" color="cyan" radius="xl" disabled={true}>Vehicle Assignment</Button>
+        <Button variant="filled" onClick={() => generateMockData(config.randomAmount)} color="cyan" radius="xl">Retrieve Order</Button>
+        {/* <Button variant="filled" color="cyan" radius="xl" disabled={true}>Vehicle Assignment</Button> */}
         <Button onClick={() => groupShipments(shipments)} variant="filled" color="cyan" radius="xl">Create Shipment Order</Button>
       </Flex>
       <ShipmentTable data={shipments} />
@@ -127,7 +127,7 @@ export default function HomePage() {
       <Flex mih={50} gap="xs" justify="flex-start">
         <Button onClick={() => setMapOpen(true)} variant="default">Show in map</Button>
         <Button onClick={() => setConfigOpen(true)} variant="default">Config</Button>
-        <Button onClick={clearCache} variant="default">Clear Cache</Button>
+        {/* <Button onClick={clearCache} variant="default">Clear Cache</Button> */}
       </Flex>
       <Modal
         opened={mapOpen}
@@ -139,13 +139,13 @@ export default function HomePage() {
         <Map shipments={shipments} />
       </Modal>
       <Modal opened={configOpen} onClose={closeConfig} size="xs" title="Config">
-        <Input.Wrapper label="Enpoint">
+        {/* <Input.Wrapper label="Enpoint">
           <Input placeholder="Input Enpoint"
             value={tempConfig.endpoint}
             onChange={(evt) => { setTempConfig({ ...tempConfig, endpoint: evt.target.value }) }}
           />
         </Input.Wrapper>
-        <Space h="xs" />
+        <Space h="xs" /> */}
         <NumberInput
           onChange={(value) => setTempConfig({ ...tempConfig, randomAmount: value })}
           label="Random record amount"

@@ -58,10 +58,10 @@ export const ShipmentTable: React.FC<ShipmentTableProps> = ({ data }) => {
   }
   return (
     <>
-      <Flex mih={50} gap="xs" justify="flex-end">
+      {/* <Flex mih={50} gap="xs" justify="flex-end">
         <Button disabled={true} variant="default"><LiaFileExportSolid /> Export selected row</Button>
         <Button disabled={true} variant="default"><TbTableExport /> Export all</Button>
-      </Flex>
+      </Flex> */}
       <DataTable
         height={'auto'}
         withTableBorder
@@ -99,7 +99,7 @@ export const ShipmentTable: React.FC<ShipmentTableProps> = ({ data }) => {
           },
           { accessor: 'GroupType', width: 100, title: "Group Type", sortable: true },
           { accessor: 'Coordinate', width: 150, sortable: true, render: ({ Coordinate }) => Coordinate.lat + " " + Coordinate.long },
-          { accessor: 'CustomerReference', width: 100, title: "Customer Reference" },
+          { accessor: 'CustomerReference', width: 100, title: "Customer Id" },
           { accessor: 'CBM', width: 100, sortable: true },
           { accessor: 'Weight', width: 100, sortable: true },
         ]}

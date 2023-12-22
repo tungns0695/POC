@@ -8,8 +8,8 @@ import '@mantine/core/styles.layer.css';
 import 'mantine-datatable/styles.layer.css';
 
 export const metadata = {
-  title: 'Mantine Next.js template',
-  description: 'I am using Mantine with Next.js!',
+  title: 'TMS Enahacement POC',
+  description: 'TMS Enahacement POC',
 };
 
 export default function RootLayout({ children }: { children: any }) {
