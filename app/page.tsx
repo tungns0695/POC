@@ -109,6 +109,11 @@ export default function HomePage() {
     setConfigOpen(false);
   }
 
+  const clearCache = function () {
+    window.localStorage.clear();
+    window.location.reload();
+  }
+
   return (
     <Container fluid >
       <h2>Shipment Order List</h2>
@@ -122,6 +127,7 @@ export default function HomePage() {
       <Flex mih={50} gap="xs" justify="flex-start">
         <Button onClick={() => setMapOpen(true)} variant="default">Show in map</Button>
         <Button onClick={() => setConfigOpen(true)} variant="default">Config</Button>
+        <Button onClick={clearCache} variant="default">Clear Cache</Button>
       </Flex>
       <Modal
         opened={mapOpen}
