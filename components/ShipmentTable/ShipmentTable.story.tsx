@@ -5,6 +5,6 @@ export default {
   title: 'ShipmentTable',
 };
 
-const data = MockDataGenerator(100);
+const data = MockDataGenerator(60);
 
 export const Usage = () => <ShipmentTable data={data} />;

@@ -13,7 +13,7 @@ import { IconSearch, IconX } from '@tabler/icons-react';
 interface ShipmentTableProps {
   data: Shipment[];
 }
-const PAGE_SIZE = 15;
+const PAGE_SIZE = 10;
 
 export const ShipmentTable: React.FC<ShipmentTableProps> = ({ data }) => {
   const [sortStatus, setSortStatus] = useState<DataTableSortStatus<Shipment>>({

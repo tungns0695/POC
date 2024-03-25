@@ -9,7 +9,7 @@ import { notifications } from '@mantine/notifications';
 import dynamic from 'next/dynamic'
 
 const defaultConfig = {
-  randomAmount: 100,
+  randomAmount: 60,
   group: 5,
   endpoint: "https://pocbe-5xwr3324aa-uc.a.run.app/cluster"
 }
@@ -50,7 +50,7 @@ export default function HomePage() {
   }, [])
 
   function generateMockData(amount: any) {
-    let generatedMockData = MockDataGenerator(amount);
+    let generatedMockData = MockDataGenerator(defaultConfig.randomAmount);
     setShipments([...generatedMockData]);
     window.localStorage.setItem("mockData", JSON.stringify(generatedMockData));
   }

@@ -3,19 +3,442 @@ import { Shipment } from '../types/Shipment';
 
 export function MockDataGenerator(recordCount: number): Shipment[] {
     const mockData: Shipment[] = [];
+    const fixed = [
+        {
+            "Lat": "14.227170",
+            "Long": "100.712660",
+            "Id": "2100000029",
+            "District": " อ.วังน้อย",
+            "Name": "HOMEPRO"
+        },
+        {
+            "Lat": "18.801480",
+            "Long": "98.965500",
+            "Id": "2100000030",
+            "District": " อ.เมือง",
+            "Name": "NIYOM PANICH"
+        },
+        {
+            "Lat": "18.801480",
+            "Long": "98.965500",
+            "Id": "2100000039",
+            "District": " อ.เมือง",
+            "Name": "NIYOM PANICH"
+        },
+        {
+            "Lat": "18.589050",
+            "Long": "99.011020",
+            "Id": "2100000041",
+            "District": " อ.เมืองลำพูน",
+            "Name": "NIYOM PANICH"
+        },
+        {
+            "Lat": "18.589050",
+            "Long": "99.011020",
+            "Id": "2100000042",
+            "District": " อ.เมืองลำพูน",
+            "Name": "NIYOM PANICH"
+        },
+        {
+            "Lat": "17.160970",
+            "Long": "104.146840",
+            "Id": "2100000053",
+            "District": " อ.เมืองสกลนคร",
+            "Name": "HITECH SAKONNAKORN"
+        },
+        {
+            "Lat": "17.160970",
+            "Long": "104.146840",
+            "Id": "2100000056",
+            "District": " อ.เมืองสกลนคร",
+            "Name": "HITECH SAKONNAKORN"
+        },
+        {
+            "Lat": "16.810260",
+            "Long": "100.257080",
+            "Id": "2100000057",
+            "District": " อ.เมืองพิษณุโลก",
+            "Name": "RACHA RIMNAM"
+        },
+        {
+            "Lat": "13.719040",
+            "Long": "100.595710",
+            "Id": "2100000058",
+            "District": " เขตวัฒนา",
+            "Name": "SINSOMBOON"
+        },
+        {
+            "Lat": "13.779110",
+            "Long": "100.625220",
+            "Id": "2100000079",
+            "District": " เขตคลองเตย",
+            "Name": "FUTURE WORLD"
+        },
+        {
+            "Lat": "12.609508",
+            "Long": "102.10338",
+            "Id": "2100000081",
+            "District": " อ.เมืองจันทบุรี",
+            "Name": "THE BEST 1"
+        },
+        {
+            "Lat": "13.607126",
+            "Long": "100.707883",
+            "Id": "2100000088",
+            "District": " อ.บางพลี",
+            "Name": "POWER BUY"
+        },
+        {
+            "Lat": "13.607126",
+            "Long": "100.707883",
+            "Id": "2100000117",
+            "District": " อ.บางพลี",
+            "Name": "POWER BUY"
+        },
+        {
+            "Lat": "13.607126",
+            "Long": "100.707883",
+            "Id": "2100000118",
+            "District": " อ.บางพลี",
+            "Name": "POWER BUY"
+        },
+        {
+            "Lat": "17.15687",
+            "Long": "104.143249",
+            "Id": "2100000120",
+            "District": " อ.เมืองสกลนคร",
+            "Name": "HITECH SAKONNAKORN"
+        },
+        {
+            "Lat": "14.985579",
+            "Long": "103.099271",
+            "Id": "2100000126",
+            "District": " อ.เมืองบุรีรัมย์",
+            "Name": "PIEBPROM ELECTRIC"
+        },
+        {
+            "Lat": "16.292907",
+            "Long": "103.979608",
+            "Id": "2100000131",
+            "District": " อ.โพนทอง",
+            "Name": "FULL HOUSE STORE"
+        },
+        {
+            "Lat": "15.003428",
+            "Long": "102.060674",
+            "Id": "2100000134",
+            "District": " อ.เมืองนครราชสีมา",
+            "Name": "TAIFAH CITY"
+        },
+        {
+            "Lat": "17.498873",
+            "Long": "101.725026",
+            "Id": "2100000136",
+            "District": " อ.เมืองเลย",
+            "Name": "SRITHAM"
+        },
+        {
+            "Lat": "13.718673",
+            "Long": "100.560278",
+            "Id": "2100000164",
+            "District": " เขตวัฒนา",
+            "Name": "SINSOMBOON"
+        },
+        {
+            "Lat": "13.718673",
+            "Long": "100.560278",
+            "Id": "2100000166",
+            "District": " เขตวัฒนา",
+            "Name": "SINSOMBOON"
+        },
+        {
+            "Lat": "13.718673",
+            "Long": "100.560278",
+            "Id": "2100000173",
+            "District": " เขตวัฒนา",
+            "Name": "SINSOMBOON"
+        },
+        {
+            "Lat": "13.60821",
+            "Long": "100.682796",
+            "Id": "2100000175",
+            "District": "  อ.บางเสาธง",
+            "Name": "SINSOMBOON"
+        },
+        {
+            "Lat": "16.172261",
+            "Long": "103.301186",
+            "Id": "2100000179",
+            "District": "  อ.เมืองมหาสารคาม",
+            "Name": "OWE PENG HONG"
+        },
+        {
+            "Lat": "13.097431",
+            "Long": "99.952887",
+            "Id": "2100000195",
+            "District": "  อ.เมืองเพชรบุรี",
+            "Name": "TAYANG"
+        },
+        {
+            "Lat": "13.96488",
+            "Long": "100.726963",
+            "Id": "2100000199",
+            "District": "  อ.ลำลูกกา",
+            "Name": "DO HOME"
+        },
+        {
+            "Lat": "13.96488",
+            "Long": "100.726963",
+            "Id": "2100000200",
+            "District": "  อ.ลำลูกกา",
+            "Name": "DO HOME"
+        },
+        {
+            "Lat": "13.96488",
+            "Long": "100.726963",
+            "Id": "2100000201",
+            "District": "  อ.ลำลูกกา",
+            "Name": "DO HOME"
+        },
+        {
+            "Lat": "12.909557",
+            "Long": "99.906376",
+            "Id": "2100000221",
+            "District": " อ.ท่ายาง",
+            "Name": "TAYANG"
+        },
+        {
+            "Lat": "12.909557",
+            "Long": "99.906376",
+            "Id": "2100000225",
+            "District": " อ.ท่ายาง",
+            "Name": "TAYANG"
+        },
+        {
+            "Lat": "13.097431",
+            "Long": "99.952887",
+            "Id": "2100000227",
+            "District": "  อ.เมืองเพชรบุรี",
+            "Name": "TAYANG"
+        },
+        {
+            "Lat": "13.807607",
+            "Long": "100.556824",
+            "Id": "2100000231",
+            "District": " เขตจตุจักร",
+            "Name": "SAENGCHAI ELECTRONIC"
+        },
+        {
+            "Lat": "13.807607",
+            "Long": "100.556824",
+            "Id": "2100000232",
+            "District": " เขตจตุจักร",
+            "Name": "SAENGCHAI ELECTRONIC"
+        },
+        {
+            "Lat": "13.96488",
+            "Long": "100.726963",
+            "Id": "2100000241",
+            "District": "  อ.ลำลูกกา",
+            "Name": "DO HOME"
+        },
+        {
+            "Lat": "13.60821",
+            "Long": "100.682796",
+            "Id": "2100000249",
+            "District": "  อ.บางเสาธง",
+            "Name": "SINSOMBOON"
+        },
+        {
+            "Lat": "13.54817175",
+            "Long": "100.2744638",
+            "Id": "2100000318",
+            "District": " อ.เมืองสมุทรสาคร",
+            "Name": "SAKORN RADIO"
+        },
+        {
+            "Lat": "13.311957375",
+            "Long": "101.112440875",
+            "Id": "2100000333",
+            "District": " อ.บ้านบึง",
+            "Name": "SAHAPAT TV"
+        },
+        {
+            "Lat": "18.779839",
+            "Long": "100.773501",
+            "Id": "2100000347",
+            "District": "  อ.เมืองน่าน",
+            "Name": "SINTHANEE"
+        },
+        {
+            "Lat": "20.139548",
+            "Long": "99.857142",
+            "Id": "2100000353",
+            "District": "  อ.แม่จัน",
+            "Name": "SINTHANEE"
+        },
+        {
+            "Lat": "19.357455",
+            "Long": "99.831924",
+            "Id": "2100000355",
+            "District": "  อ.แม่ใจ",
+            "Name": "SINTHANEE"
+        },
+        {
+            "Lat": "19.7073634",
+            "Long": "100.181481",
+            "Id": "2100000369",
+            "District": "  อ.เทิง",
+            "Name": "SINTHANEE"
+        },
+        {
+            "Lat": "14.227170",
+            "Long": "100.712660",
+            "Id": "2100000398",
+            "District": " อ.วังน้อย",
+            "Name": "HOMEPRO"
+        },
+        {
+            "Lat": "14.227170",
+            "Long": "100.712660",
+            "Id": "2100000403",
+            "District": " อ.วังน้อย",
+            "Name": "HOMEPRO"
+        },
+        {
+            "Lat": "14.227170",
+            "Long": "100.712660",
+            "Id": "2100000405",
+            "District": " อ.วังน้อย",
+            "Name": "HOMEPRO"
+        },
+        {
+            "Lat": "14.075755",
+            "Long": "100.509242",
+            "Id": "2100009281",
+            "District": "  อ.สามโคก",
+            "Name": "SIAM GLOBAL HOUSE"
+        },
+        {
+            "Lat": "14.075755",
+            "Long": "100.509242",
+            "Id": "2100009284",
+            "District": "  อ.สามโคก",
+            "Name": "SIAM GLOBAL HOUSE"
+        },
+        {
+            "Lat": "14.075755",
+            "Long": "100.509242",
+            "Id": "2100009286",
+            "District": "  อ.สามโคก",
+            "Name": "SIAM GLOBAL HOUSE"
+        },
+        {
+            "Lat": "13.707435",
+            "Long": "100.759748",
+            "Id": "2100009287",
+            "District": "  อ.บางพลี",
+            "Name": "SIAM GLOBAL HOUSE"
+        },
+        {
+            "Lat": "13.707435",
+            "Long": "100.759748",
+            "Id": "2100009292",
+            "District": "  อ.บางพลี",
+            "Name": "SIAM GLOBAL HOUSE"
+        },
+        {
+            "Lat": "13.707435",
+            "Long": "100.759748",
+            "Id": "2100009293",
+            "District": "  อ.บางพลี",
+            "Name": "SIAM GLOBAL HOUSE"
+        },
+        {
+            "Lat": "20.4034615",
+            "Long": "99.8855755",
+            "Id": "2100010166",
+            "District": "  อ.แม่สาย",
+            "Name": "SINTHANEE"
+        },
+        {
+            "Lat": "20.4034615",
+            "Long": "99.8855755",
+            "Id": "2100010167",
+            "District": "  อ.แม่สาย",
+            "Name": "SINTHANEE"
+        },
+        {
+            "Lat": "18.8885809",
+            "Long": "100.305667",
+            "Id": "2100010169",
+            "District": "  อ.เชียงม่วน",
+            "Name": "SINTHANEE"
+        },
+        {
+            "Lat": "19.7491564",
+            "Long": "99.1433550",
+            "Id": "2100010170",
+            "District": "  อ.ไชยปราการ",
+            "Name": "SINTHANEE"
+        },
+        {
+            "Lat": "19.7491564",
+            "Long": "99.1433550",
+            "Id": "2100010171",
+            "District": "  อ.ไชยปราการ",
+            "Name": "SINTHANEE"
+        },
+        {
+            "Lat": "20.2943481",
+            "Long": "100.127379",
+            "Id": "2100010172",
+            "District": "  อ.เชียงแสน",
+            "Name": "SINTHANEE"
+        },
+        {
+            "Lat": "19.7099101",
+            "Long": "100.254544",
+            "Id": "2100010174",
+            "District": "  อ.เทิง",
+            "Name": "SINTHANEE"
+        },
+        {
+            "Lat": "19.9165054",
+            "Long": "99.8814915",
+            "Id": "2100010176",
+            "District": " อ.เมืองเชียงราย",
+            "Name": "SINTHANEE"
+        },
+        {
+            "Lat": "13.7171285",
+            "Long": "100.560492",
+            "Id": "2100010182",
+            "District": " เขตคลองเตย",
+            "Name": "FUTURE WORLD"
+        },
+        {
+            "Lat": "14.8233856",
+            "Long": "104.034640",
+            "Id": "2100010185",
+            "District": "อ.ปรางค์กู่",
+            "Name": "TANG PANICH"
+        }
+    ]
 
-    for (let i = 1; i <= recordCount; i++) {
-        const district = getRandomHanoiDistrict();
-        const coordinate = getCoordinateForDistrict(district);
+    for (let i = 1; i < recordCount; i++) {
         const data: Shipment = {
             Id: i,
             WaybillNo: "IF" + Math.floor(Math.random() * 1000000).toString().padStart(6, '0'),
-            CustomerName: generateVietnameseName(),
-            Site: district,
-            WaybillDate: getCurrentDate(),
+            CustomerName: fixed[i].Name,
+            Site: fixed[i].District,
+            WaybillDate: "2023-09-04",
             Group: "",
             Status: "Processing",
-            Coordinate: coordinate,
+            Coordinate: {
+                long: Number(fixed[i]?.Long),
+                lat: Number(fixed[i]?.Lat)
+            },
             CustomerReference: "SOCAC" + Math.floor(Math.random() * 100000).toString().padStart(5, '0'),
             GroupType: "",
             CBM: (Math.floor(Math.random() * 30) + 1) + "m3",
@@ -26,97 +449,4 @@ export function MockDataGenerator(recordCount: number): Shipment[] {
     }
 
     return mockData;
-}
-
-const hanoiDistricts = [
-    'Ba Dinh',
-    'Hoan Kiem',
-    'Hai Ba Trung',
-    'Dong Da',
-    'Tay Ho',
-    'Cau Giay',
-    'Thanh Xuan',
-    'Hoang Mai',
-    'Long Bien',
-    'Nam Tu Liem',
-    'Bac Tu Liem',
-    'Ha Dong',
-    'Me Linh',
-    'Dong Anh',
-    'Soc Son',
-    'Gia Lam',
-    'Thanh Tri'
-];
-
-function getCoordinateForDistrict(district: string): any {
-    const { minLongitude, maxLongitude, minLatitude, maxLatitude } = getDistrictBoundaries(district);
-    return getRandomCoordinateWithinBounds(minLongitude, maxLongitude, minLatitude, maxLatitude);
-}
-
-function getRandomCoordinateWithinBounds(minLongitude: number, maxLongitude: number, minLatitude: number, maxLatitude: number): Coordinate {
-    return {
-        long: getRandomCoordinate(minLongitude, maxLongitude),
-        lat: getRandomCoordinate(minLatitude, maxLatitude),
-    };
-}
-
-function getDistrictBoundaries(district: string): { minLongitude: number, maxLongitude: number, minLatitude: number, maxLatitude: number } {
-    // Define boundaries for each district as needed
-    const districtBoundaries: { [key: string]: { minLongitude: number, maxLongitude: number, minLatitude: number, maxLatitude: number } } = {
-        'Ba Dinh': { minLongitude: 105.81, maxLongitude: 105.83, minLatitude: 21.02, maxLatitude: 21.05 },
-        'Hoan Kiem': { minLongitude: 105.85, maxLongitude: 105.86, minLatitude: 21.01, maxLatitude: 21.03 },
-        'Hai Ba Trung': { minLongitude: 105.854, maxLongitude: 105.862, minLatitude: 20.995, maxLatitude: 21.017 },
-        'Dong Da': { minLongitude: 105.823, maxLongitude: 105.830, minLatitude: 20.999, maxLatitude: 21.019 },
-        'Tay Ho': { minLongitude: 105.818, maxLongitude: 105.832, minLatitude: 21.057, maxLatitude: 21.073 },
-        'Cau Giay': { minLongitude: 105.787, maxLongitude: 105.800, minLatitude: 21.018, maxLatitude: 21.038 },
-        'Thanh Xuan': { minLongitude: 105.800, maxLongitude: 105.818, minLatitude: 20.988, maxLatitude: 21.011 },
-        'Hoang Mai': { minLongitude: 105.863, maxLongitude: 105.883, minLatitude: 20.948, maxLatitude: 20.980 },
-        'Long Bien': { minLongitude: 105.870, maxLongitude: 105.900, minLatitude: 21.030, maxLatitude: 21.060 },
-        'Nam Tu Liem': { minLongitude: 105.752, maxLongitude: 105.778, minLatitude: 20.993, maxLatitude: 21.010 },
-        'Bac Tu Liem': { minLongitude: 105.761, maxLongitude: 105.776, minLatitude: 21.062, maxLatitude: 21.079 },
-        'Ha Dong': { minLongitude: 105.756, maxLongitude: 105.783, minLatitude: 20.939, maxLatitude: 20.961 },
-        'Me Linh': { minLongitude: 105.724, maxLongitude: 105.769, minLatitude: 21.190, maxLatitude: 21.223 },
-        'Dong Anh': { minLongitude: 105.768, maxLongitude: 105.798, minLatitude: 21.128, maxLatitude: 21.155 },
-        'Soc Son': { minLongitude: 105.834, maxLongitude: 105.878, minLatitude: 21.219, maxLatitude: 21.295 },
-        'Gia Lam': { minLongitude: 105.893, maxLongitude: 105.960, minLatitude: 21.001, maxLatitude: 21.052 },
-        'Thanh Tri': { minLongitude: 105.850, maxLongitude: 105.898, minLatitude: 20.842, maxLatitude: 20.892 },
-    };
-
-    return districtBoundaries[district] || { minLongitude: 105.7, maxLongitude: 106.0, minLatitude: 20.8, maxLatitude: 21.1 };
-}
-
-function generateVietnameseName(): string {
-    const firstNames = ["Nguyen Van", "Tran Trung", "Le Thi", "Pham Hoang", "Hoang Van"];
-    const lastNames = ["Van", "Thi", "Duc", "Anh", "My"];
-    const fullName = `${firstNames[Math.floor(Math.random() * firstNames.length)]} ${lastNames[Math.floor(Math.random() * lastNames.length)]}`;
-    return fullName;
-}
-
-function getCurrentDate(): string {
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = (now.getMonth() + 1).toString().padStart(2, '0');
-    const day = now.getDate().toString().padStart(2, '0');
-    return `${year}-${month}-${day}`;
-}
-
-function getRandomHanoiDistrict(): string {
-    return hanoiDistricts[Math.floor(Math.random() * hanoiDistricts.length)];
-}
-
-function getRandomHanoiCoordinate(): Coordinate {
-    // Hanoi city boundaries
-    const minLongitude = 105.7;
-    const maxLongitude = 106.0;
-    const minLatitude = 20.8;
-    const maxLatitude = 21.1;
-
-    return {
-        long: getRandomCoordinate(minLongitude, maxLongitude),
-        lat: getRandomCoordinate(minLatitude, maxLatitude),
-    };
-}
-
-function getRandomCoordinate(min: number, max: number): number {
-    return parseFloat((Math.random() * (max - min) + min).toFixed(6));
 }

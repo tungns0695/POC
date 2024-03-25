@@ -8,8 +8,8 @@ import "leaflet-defaulticon-compatibility"
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css"
 
 const center = {
-  lat: 21.0278,
-  lng: 105.8342
+  lat: 15.736717,
+  lng: 99.8342
 };
 
 export interface MapProps {
@@ -45,7 +45,7 @@ const icons = markerIcons.map(x => new L.Icon({
   iconAnchor: [16, 32],
   popupAnchor: [0, -32],
 }));
-const defaultZoomLevel = 12;
+const defaultZoomLevel = 7;
 
 export const Map: React.FC<MapProps> = ({ shipments }) => {
   const markers = shipments.map((x, index) => {
