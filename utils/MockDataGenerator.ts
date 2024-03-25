@@ -426,7 +426,7 @@ export function MockDataGenerator(recordCount: number): Shipment[] {
         }
     ]
 
-    for (let i = 1; i < recordCount; i++) {
+    for (let i = 0; i < recordCount; i++) {
         const data: Shipment = {
             Id: i,
             WaybillNo: "IF" + Math.floor(Math.random() * 1000000).toString().padStart(6, '0'),
